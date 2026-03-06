@@ -76,18 +76,46 @@ function setupSyrupListeners(): void {
 setupSyrupListeners();
 
 function setupCreamListeners(): void {
-  // TODO: implement this function
+  const inputs = document.querySelectorAll<HTMLInputElement>('input[name="cream"]');
+
+  inputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      if (input.checked) {
+        console.log(`selected ${input.value}`);
+        applyCream(input);
+      }
+    });
+  });
 }
+
 setupCreamListeners();
 
 function setupTemperatureListeners(): void {
-  // TODO: implement this function
+  const inputs = document.querySelectorAll<HTMLInputElement>('input[name="temperature"]');
+
+  inputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      if (input.checked) {
+        console.log(`selected ${input.value}`);
+        applyTemperature(input);
+      }
+    });
+  });
 }
 
 setupTemperatureListeners();
 
 function setupBaseListeners(): void {
-  // TODO: implement this function
+  const inputs = document.querySelectorAll<HTMLInputElement>('input[name="base"]');
+
+  inputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      if (input.checked) {
+        console.log(`selected ${input.value}`);
+        applyBase(input);
+      }
+    });
+  });
 }
 
 setupBaseListeners();
