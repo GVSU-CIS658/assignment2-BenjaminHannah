@@ -50,6 +50,7 @@ function applyBase(input: HTMLInputElement): void {
   if (!color) return;
 
   baseDiv.style.backgroundColor = color;
+  
 }
 
 function applyCream(input: HTMLInputElement): void {
@@ -67,10 +68,30 @@ function applyCream(input: HTMLInputElement): void {
 
 function applySyrup(input: HTMLInputElement): void {
   // TODO: implement this function
+  const syrupElements = document.getElementsByClassName("syrup");
+
+  if (syrupElements.length === 0) return;
+
+  const syrupDiv = syrupElements[0] as HTMLDivElement;
+
+  const color = syrups[input.value];
+  if (!color) return;
+  syrupDiv.style.background = `repeating-linear-gradient(45deg, white, white 10px, ${color} 10px, ${color} 20px)`;
+
+
 }
 
 function setupSyrupListeners(): void {
-  // TODO: implement this function
+  const inputs = document.querySelectorAll<HTMLInputElement>('input[name="syrup"]');
+
+  inputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      if (input.checked) {
+        console.log(`selected ${input.value}`);
+        applySyrup(input);
+      }
+    });
+  });
 }
 
 setupSyrupListeners();
